@@ -10,11 +10,14 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
     "ava": "^6.2.0",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0"
   },
   "jest": {
-    "transform": {},
-    "testEnvironment": "node"
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }
