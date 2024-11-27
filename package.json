@@ -14,5 +14,8 @@
     "ava": "^6.2.0",
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "software-testing-assignment": "file:"
   }
 }
