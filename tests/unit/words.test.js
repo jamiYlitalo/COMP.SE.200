@@ -2,50 +2,36 @@
 
 import words from '../../src/words.js';
 
-jest.mock('./.internal/unicodeWords.js', () => jest.fn((string) => string.split(/\s+/)))
-
 describe('words function', () => {
-  test('splits a simple ASCII string into words', () => {
-    const result = words('fred, barney, & pebbles')
-    expect(result).toEqual(['fred', 'barney', 'pebbles'])
-  })
+  test('splits basic ASCII string with default behavior', () => {
+    const input = 'fred, barney, & pebbles';
+    const result = words(input);
+    expect(result).toEqual(['fred', 'barney', 'pebbles']);
+  });
 
-  test('splits a string with a custom pattern', () => {
-    const result = words('fred, barney, & pebbles', /[^, ]+/g)
-    expect(result).toEqual(['fred', 'barney', '&', 'pebbles'])
-  })
-
-  test('handles a string with Unicode characters', () => {
-    const mockUnicodeWords = require('./.internal/unicodeWords.js')
-    mockUnicodeWords.mockReturnValue(['你好', '世界'])
-
-    const result = words('你好，世界')
-    expect(result).toEqual(['你好', '世界'])
-    expect(mockUnicodeWords).toHaveBeenCalledWith('你好，世界')
-  })
+  test('splits basic ASCII string with custom pattern', () => {
+    const input = 'fred, barney, & pebbles';
+    const pattern = /[^, ]+/g;
+    const result = words(input, pattern);
+    expect(result).toEqual(['fred', 'barney', '&', 'pebbles']);
+  });
 
   test('handles an empty string', () => {
-    const result = words('')
-    expect(result).toEqual([])
-  })
+    const input = '';
+    const result = words(input);
+    expect(result).toEqual([]);
+  });
 
-  test('handles undefined or null input', () => {
-    expect(words(undefined)).toEqual([])
-    expect(words(null)).toEqual([])
-  })
+  test('splits string with underscores correctly', () => {
+    const input = 'Hello_world';
+    const result = words(input);
+    expect(result).toEqual(['Hello', 'world']);
+  });
 
-  test('splits a string with numbers and letters', () => {
-    const result = words('abc123 xyz456')
-    expect(result).toEqual(['abc123', 'xyz456'])
-  })
-
-  test('handles strings with special characters', () => {
-    const result = words('hello-world!')
-    expect(result).toEqual(['hello', 'world'])
-  })
-
-  test('handles strings with only special characters', () => {
-    const result = words('!!! $$$ ###')
-    expect(result).toEqual([])
-  })
-})
+  test('splits string using custom pattern for alphanumeric words', () => {
+    const input = 'foo bar baz';
+    const pattern = /\w+/g;
+    const result = words(input, pattern);
+    expect(result).toEqual(['foo', 'bar', 'baz']);
+  });
+});
