@@ -1,5 +1,6 @@
-// tests/test.js
-import add from '../src/add.js';
+//nimeä testifunktiot <nimi>.test.js että jest lyötää ne!
+
+import add from '../../src/add.js';
 
 describe('add function', () => {
   test('adds two positive numbers', () => {
