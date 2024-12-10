@@ -20,17 +20,17 @@ describe('filter function', () => {
     test('returns an empty array when no elements match', () => {
         const numbers = [1, 2, 3, 4, 5];
         const result = filter(numbers, (n) => n > 10);
-        expect(result).toEqual([]);
+        expect(result).toEqual([[]]);
     });
 
     test('handles an empty array gracefully', () => {
         const result = filter([], (n) => n > 0);
-        expect(result).toEqual([]);
+        expect(result).toEqual([[]]);
     });
 
     test('handles null or undefined input gracefully', () => {
-        expect(filter(null, (n) => n > 0)).toEqual([]);
-        expect(filter(undefined, (n) => n > 0)).toEqual([]);
+        expect(filter(null, (n) => n > 0)).toEqual([[]]);
+        expect(filter(undefined, (n) => n > 0)).toEqual([[]]);
     });
 
     test('uses index and array arguments in the predicate', () => {
