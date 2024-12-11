@@ -1,4 +1,4 @@
-//nimeä testifunktiot <nimi>.test.js että jest lyötää ne!
+//nimeä testifunktiot <nimi>.test.js että jest löytää ne!
 
 import words from '../../src/words.js';
 
@@ -34,4 +34,11 @@ describe('words function', () => {
     const result = words(input, pattern);
     expect(result).toEqual(['foo', 'bar', 'baz']);
   });
+
+  test('handles string with excessive whitespace', () => {
+    const input = '   multiple   spaces  ';
+    const result = words(input);
+    expect(result).toEqual(['multiple', 'spaces']);
+  });
+  
 });

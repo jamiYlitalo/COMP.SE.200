@@ -1,4 +1,4 @@
-//nimeä testifunktiot <nimi>.test.js että jest lyötää ne!
+//nimeä testifunktiot <nimi>.test.js että jest löytää ne!
 
 import add from '../../src/add.js';
 
