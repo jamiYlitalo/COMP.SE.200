@@ -20,7 +20,7 @@ describe('add function', () => {
   });
 
   test('adds default value when only one argument is provided', () => {
-    expect(add(5)).toBe(5); // Assuming the default behavior is 5 + 0 = 5
+    expect(add(5)).toBe(5);
   });
 
   test('adds two very large numbers', () => {
