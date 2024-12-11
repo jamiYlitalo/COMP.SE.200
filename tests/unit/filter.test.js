@@ -38,4 +38,10 @@ describe('filter function', () => {
         const result = filter(numbers, (value, index, array) => index === array.length - 1);
         expect(result).toEqual([3]);
     });
+
+      test('handles sparse arrays correctly', () => {
+        const sparseArray = [1, , 3, undefined, 5]; // Sparse array with holes
+        const result = filter(sparseArray, (n) => n !== undefined);
+        expect(result).toEqual([1, 3, 5]);
+      });
 });
