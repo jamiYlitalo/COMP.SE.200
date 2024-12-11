@@ -22,4 +22,17 @@ describe('add function', () => {
   test('adds default value when only one argument is provided', () => {
     expect(add(5)).toBe(5); // Assuming the default behavior is 5 + 0 = 5
   });
+
+  test('adds two very large numbers', () => {
+    expect(add(1e12, 1e12)).toBe(2e12);
+  });
+
+  test('adds two very small numbers', () => {
+    expect(add(1e-12, 1e-12)).toBe(2e-12);
+  });
+
+  test('adds Infinity and a number', () => {
+    expect(add(Infinity, 1)).toBe(Infinity);
+  });
 });
+
